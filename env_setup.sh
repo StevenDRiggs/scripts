@@ -1,4 +1,4 @@
-#! bash
+#! /bin/bash
 
 
 sudo apt upgrade -y && sudo apt update -y
@@ -45,9 +45,11 @@ pip3 install virtualenv
 
 cd ~
 git clone git@github.com/$gh_username/MyConfig.git
-cat MyConfig/.bash_profile >> .bash_profile
-source .bash_profile
-mv MyConfig/.vimrc .
+cp ~/MyConfig/.bash_profile ~
+cp ~/MyConfig/.bashrc ~
+cp ~/MyConfig/.profile ~
+cp ~/MyConfig/.vimrc ~
+source ~/.bash_profile
 
 sudo apt install vim -y
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
