@@ -39,6 +39,7 @@ rbenv global 2.5.7
 gem install bundler rails
 
 pkg install python -y
+pip install --upgrade pip
 pip install virtualenv
 
 pkg install vim -y
