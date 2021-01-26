@@ -33,6 +33,8 @@ nvm install node
 npm install -g npm
 
 curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
+mkdir -p "$(rbenv root)"/plugins
+git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
 rbenv install 2.5.7
 rbenv global 2.5.7
 
