@@ -15,7 +15,7 @@ pkg install libyaml libxml2 libffi automake libtool bison gnupg postgresql -y
 
 ssh -T git@github.com
 
-git clone git@github.com/$gh_username/MyConfig.git ~/MyConfig
+git clone git@github.com:$gh_username/MyConfig.git ~/MyConfig
 cp ~/MyConfig/tmux_bash ~/.bash_profile
 cp ~/MyConfig/tmux_bash ~/.bashrc
 cp ~/MyConfig/tmux_bash ~/.profile
