@@ -13,17 +13,20 @@ git config --global user.email $email
 
 pkg install libyaml libxml2 libffi automake libtool bison gnupg postgresql -y
 
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
+ssh -T git@github.com
 
 git clone git@github.com/$gh_username/MyConfig.git ~/MyConfig
 cp ~/MyConfig/tmux_bash ~/.bash_profile
 cp ~/MyConfig/tmux_bash ~/.bashrc
 cp ~/MyConfig/tmux_bash ~/.profile
 
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
+
 git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 cd ~/.rbenv && src/configure && make -C src
 
 cd
+cp ~/MyConfig/tmux_bash ~/.bash_profile
 source ~/.bash_profile
 
 nvm install node
