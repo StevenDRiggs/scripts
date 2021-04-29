@@ -1,10 +1,10 @@
 #! /data/data/com.termux/files/usr/bin/bash
 
 
-pkg upgrade -y && pkg update -y
-pkg install curl git libyaml libxml2 libffi automake libtool bison gnupg postgresql man openssh nodejs clang -y
-
-npm install -g npm
+#pkg upgrade -y && pkg update -y
+#pkg install curl git libyaml libxml2 libffi automake libtool bison gnupg postgresql man openssh nodejs clang -y
+#
+#npm install -g npm
 
 curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
 export PATH="$HOME/.rbenv/bin:$PATH"
