@@ -6,8 +6,8 @@ pkg install curl git libyaml libxml2 libffi automake libtool bison gnupg postgre
 #
 #npm install -g npm
 
+export PATH="$HOME/.rbenv/bin:$PATH"
 curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
-#export PATH="$HOME/.rbenv/bin:$PATH"
 #mkdir -p "$(rbenv root)"/plugins
 #git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
 #curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
