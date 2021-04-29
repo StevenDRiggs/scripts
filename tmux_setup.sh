@@ -2,21 +2,24 @@
 
 
 pkg upgrade -y && pkg update -y
-pkg upgrade -y && pkg update -y
-pkg install curl git libyaml libxml2 libffi automake libtool bison gnupg postgresql -y
+pkg install curl git libyaml libxml2 libffi automake libtool bison gnupg postgresql man openssh -y
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 nvm install node
 npm install -g npm
 
-pkg install rbenv
+curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
 rbenv init
 
 read -p 'GitHub username?: ' gh_username
+read -p 'Email?: ' email
 git config --global color.ui true
 git config --global user.name $gh_username
-git config --global user.email $(read -p 'Email?: ')
+git config --global user.email $email
 
 mkdir -p "$(rbenv root)"/plugins
 git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
