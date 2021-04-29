@@ -9,9 +9,8 @@ pkg install curl git libyaml libxml2 libffi automake libtool bison gnupg postgre
 export PATH="$HOME/.rbenv/bin:$PATH"
 curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
 mkdir -p "$(rbenv root)"/plugins
-git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
-#curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
-#rbenv init
+rbenv init
+curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
 #
 #read -p 'GitHub username?: ' gh_username
 #read -p 'Email?: ' email
