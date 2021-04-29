@@ -2,9 +2,8 @@
 
 
 pkg upgrade -y && pkg update -y
-pkg install curl git libyaml libxml2 libffi automake libtool bison gnupg postgresql man openssh -y
+pkg install curl git libyaml libxml2 libffi automake libtool bison gnupg postgresql man openssh nodejs -y
 
-pkg install nodejs
 npm install -g npm
 
 curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
