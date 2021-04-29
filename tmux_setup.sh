@@ -25,21 +25,21 @@ echo ~/MyConfig/tmux_bash >> ~/.bash_profile
 cd
 source ~/.bash_profile
 
-rbenv install 2.5.7
-rbenv install 3.0.0
-rbenv global 3.0.0
-
-gem install bundler rails
-
-pkg install python -y
-pip install --upgrade pip
-pip install virtualenv
-
-pkg install vim -y
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-cp ~/MyConfig/.vimrc ~
-vim -c ':PluginInstall' -c ':q' -c ':q' .vimrc
-vim -c ':%s/"//' -c ':w' -c ':source %' -c ':PluginInstall' -c ':q' -c ':q' .vimrc
-vim -c ':%s/"//' -c ':w' -c ':q' .vimrc
-
-rm -rf MyConfig/
+#rbenv install 2.5.7
+#rbenv install 3.0.0
+#rbenv global 3.0.0
+#
+#gem install bundler rails
+#
+#pkg install python -y
+#pip install --upgrade pip
+#pip install virtualenv
+#
+#pkg install vim -y
+#git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+#cp ~/MyConfig/.vimrc ~
+#vim -c ':PluginInstall' -c ':q' -c ':q' .vimrc
+#vim -c ':%s/"//' -c ':w' -c ':source %' -c ':PluginInstall' -c ':q' -c ':q' .vimrc
+#vim -c ':%s/"//' -c ':w' -c ':q' .vimrc
+#
+#rm -rf MyConfig/
