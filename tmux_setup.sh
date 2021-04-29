@@ -2,7 +2,7 @@
 
 
 pkg upgrade -y && pkg update -y
-pkg install curl git libyaml libxml2 libffi automake libtool bison gnupg postgresql man openssh nodejs gcc -y
+pkg install curl git libyaml libxml2 libffi automake libtool bison gnupg postgresql man openssh nodejs clang -y
 
 npm install -g npm
 
