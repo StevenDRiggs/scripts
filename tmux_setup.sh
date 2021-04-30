@@ -13,6 +13,7 @@ touch ~/.bash_profile
 #curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
 #mkdir -p "$(rbenv root)"/plugins
 #rbenv init
+#curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
 #
 read -p 'GitHub username?: ' gh_username < /dev/tty
 #read -p 'Email?: ' email < /dev/tty
@@ -38,11 +39,6 @@ git clone https://github.com/$gh_username/MyConfig.git ~/MyConfig
 #pkg install vim -y
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 cp ~/MyConfig/.vimrc ~
-vim -c ':PluginInstall' -c 'q' -c ':%s/^"//' -c ':wq' ~/.vimrc
-
-#curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
-echo 'filler command'
-
-vim -c ':PluginInstall' -c 'q' -c ':%s/^"//' -c ':%s/^"//' -c ':wq' ~/.vimrc
+vim -c ':PluginInstall' -c 'q' -c ':%s/^"//' -c ':w' -c ':so %' -c ':PluginInstall' -c 'q' -c ':%s/^"//' -c ':wq' ~/.vimrc
 
 rm -rf MyConfig/
