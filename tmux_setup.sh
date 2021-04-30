@@ -17,7 +17,7 @@ read -p 'Email?: ' email < /dev/tty
 git config --global color.ui true
 git config --global user.name $gh_username
 git config --global user.email $email
-git clone https://github.com:$gh_username/MyConfig.git ~/MyConfig
+git clone https://github.com/$gh_username/MyConfig.git ~/MyConfig
 echo ~/MyConfig/tmux_bash >> ~/.bash_profile
 
 #cd
