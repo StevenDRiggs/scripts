@@ -15,7 +15,7 @@ touch ~/.bash_profile
 #rbenv init
 #curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
 #
-#read -p 'GitHub username?: ' gh_username < /dev/tty
+read -p 'GitHub username?: ' gh_username < /dev/tty
 #read -p 'Email?: ' email < /dev/tty
 #git config --global color.ui true
 #git config --global user.name $gh_username
