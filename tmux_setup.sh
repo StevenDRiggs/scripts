@@ -39,9 +39,9 @@ git clone https://github.com/$gh_username/MyConfig.git ~/MyConfig
 #pkg install vim -y
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 cp ~/MyConfig/.vimrc ~
-vim -c ':PluginInstall' -c ':q' -c ':q' .vimrc
-vim -c ':%s/"//' -c ':w' -c ':source %' -c ':PluginInstall' -c ':q' -c ':q' .vimrc
-vim -c ':%s/"//' -c ':w' -c ':source %' -c ':PluginInstall' -c ':q' -c ':q' .vimrc
-vim -c ':%s/"//' -c ':w' -c ':q' .vimrc
+vim -c ':PluginInstall' -c ':q' -c ':q' ~/.vimrc
+vim -c ':%s/"//' -c ':w' -c ':source %' -c ':PluginInstall' -c ':q' -c ':q' ~/.vimrc
+vim -c ':%s/"//' -c ':w' -c ':source %' -c ':PluginInstall' -c ':q' -c ':q' ~/.vimrc
+vim -c ':%s/"//' -c ':w' -c ':q' ~/.vimrc
 
 rm -rf MyConfig/
