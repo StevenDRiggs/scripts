@@ -2,9 +2,10 @@
 
 
 rm -rfv ~/MyConfig ~/.bashrc ~/.bash_profile ~/.profile ~/.vimrc
+touch ~/.bash_profile
 
-pkg upgrade -y && pkg update -y
-pkg install curl git libyaml libxml2 libffi automake libtool bison gnupg postgresql man openssh nodejs clang -y
+#pkg upgrade -y && pkg update -y
+#pkg install curl git libyaml libxml2 libffi automake libtool bison gnupg postgresql man openssh nodejs clang -y
 
 #npm install -g npm
 #
@@ -19,7 +20,7 @@ pkg install curl git libyaml libxml2 libffi automake libtool bison gnupg postgre
 #git config --global color.ui true
 #git config --global user.name $gh_username
 #git config --global user.email $email
-#git clone https://github.com/$gh_username/MyConfig.git ~/MyConfig
+git clone https://github.com/$gh_username/MyConfig.git ~/MyConfig
 #cat ~/MyConfig/tmux_bash >> ~/.bash_profile
 #
 #cd
