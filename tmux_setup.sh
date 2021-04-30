@@ -12,14 +12,16 @@ pkg install curl git libyaml libxml2 libffi automake libtool bison gnupg postgre
 #rbenv init
 #curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
 
+pwd
+return
+
 read -p 'GitHub username?: ' gh_username
 read -p 'Email?: ' email
 git config --global color.ui true
 git config --global user.name $gh_username
 git config --global user.email $email
-ssh -T git@github.com
-git clone git@github.com:$gh_username/MyConfig.git ~/MyConfig
-echo ~/MyConfig/tmux_bash >> ~/.bash_profile
+#git clone https://github.com:$gh_username/MyConfig.git ~/MyConfig
+#echo ~/MyConfig/tmux_bash >> ~/.bash_profile
 
 #cd
 #source ~/.bash_profile
