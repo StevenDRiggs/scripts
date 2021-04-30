@@ -1,6 +1,8 @@
 #! /data/data/com.termux/files/usr/bin/bash
 
 
+rm -f ~/.bashrc ~/.bash_profile ~/.profile ~/.vimrc
+
 #pkg upgrade -y && pkg update -y
 #pkg install curl git libyaml libxml2 libffi automake libtool bison gnupg postgresql man openssh nodejs clang -y
 #
@@ -18,7 +20,7 @@ git config --global color.ui true
 git config --global user.name $gh_username
 git config --global user.email $email
 git clone https://github.com/$gh_username/MyConfig.git ~/MyConfig
-echo ~/MyConfig/tmux_bash >> ~/.bash_profile
+cat ~/MyConfig/tmux_bash >> ~/.bash_profile
 
 #cd
 #source ~/.bash_profile
