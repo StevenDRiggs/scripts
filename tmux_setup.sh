@@ -1,8 +1,8 @@
 #! /data/data/com.termux/files/usr/bin/bash
 
 
-pkg upgrade -y && pkg update -y
-pkg install curl git libyaml libxml2 libffi automake libtool bison gnupg postgresql man openssh nodejs clang -y
+#pkg upgrade -y && pkg update -y
+#pkg install curl git libyaml libxml2 libffi automake libtool bison gnupg postgresql man openssh nodejs clang -y
 #
 #npm install -g npm
 
@@ -12,11 +12,11 @@ pkg install curl git libyaml libxml2 libffi automake libtool bison gnupg postgre
 #rbenv init
 #curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
 
-read -p 'GitHub username?: ' gh_username < $(which tty)
-read -p 'Email?: ' email < $(which tty)
-git config --global color.ui true
-git config --global user.name $gh_username
-git config --global user.email $email
+read -p 'GitHub username?: ' gh_username < /dev/tty
+read -p 'Email?: ' email < /dev/tty
+#git config --global color.ui true
+#git config --global user.name $gh_username
+#git config --global user.email $email
 #git clone https://github.com:$gh_username/MyConfig.git ~/MyConfig
 #echo ~/MyConfig/tmux_bash >> ~/.bash_profile
 
