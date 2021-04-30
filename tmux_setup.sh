@@ -1,7 +1,7 @@
 #! /data/data/com.termux/files/usr/bin/bash
 
 
-rm -rfv ~/MyConfig ~/.bashrc ~/.bash_profile ~/.profile ~/.vimrc
+rm -rfv ~/MyConfig ~/.bashrc ~/.bash_profile ~/.profile ~/.vim*
 touch ~/.bash_profile
 
 #pkg upgrade -y && pkg update -y
@@ -40,6 +40,7 @@ git clone https://github.com/$gh_username/MyConfig.git ~/MyConfig
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 cp ~/MyConfig/.vimrc ~
 vim -c ':PluginInstall' -c ':q' -c ':q' .vimrc
+vim -c ':%s/"//' -c ':w' -c ':source %' -c ':PluginInstall' -c ':q' -c ':q' .vimrc
 vim -c ':%s/"//' -c ':w' -c ':source %' -c ':PluginInstall' -c ':q' -c ':q' .vimrc
 vim -c ':%s/"//' -c ':w' -c ':q' .vimrc
 
