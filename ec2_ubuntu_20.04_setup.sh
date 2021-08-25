@@ -34,7 +34,7 @@ sudo -u deploy nvm install node
 sudo -u deploy npm install -g npm
 sudo -u deploy npm install -g yarn
 
-sudo -u deploy add-apt-repository ppa:redislabs/redis
+sudo -u deploy add-apt-repository ppa:redislabs/redis -y
 sudo -u deploy apt update
 sudo -u deploy apt install redis
 
