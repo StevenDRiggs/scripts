@@ -28,7 +28,7 @@ sudo adduser deploy sudo
 sudo vim .ssh/authorized_keys
 
 sudo -u deploy /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-echo 'sudo -u deploy eval "$($HOME/.linuxbrew/bin/brew shellenv)"' >> $HOME/.profile
+echo 'eval "$(sudo -u deploy $HOME/.linuxbrew/bin/brew shellenv)"' >> $HOME/.profile
 eval "$(sudo -u deploy $HOME/.linuxbrew/bin/brew shellenv)"
 
 sudo apt install build-essential -y
@@ -47,23 +47,23 @@ sudo add-apt-repository ppa:redislabs/redis -y
 sudo apt update
 sudo apt install redis
 
-sudo -u deploy exec "brew install rbenv -v"
-sudo -u deploy exec "rbenv init"
-sudo -u deploy exec "echo '
+su deploy -c brew install rbenv -v
+su deploy -c rbenv init
+su deploy -c echo '
 export PATH=\"$HOME/.rbenv/bin:$PATH\"
 eval \"$(rbenv init -)\"
-export PATH=\"$HOME/.rbenv/plugins/ruby-build/bin:$PATH\"' >> .bashrc"
+export PATH=\"$HOME/.rbenv/plugins/ruby-build/bin:$PATH\"' >> .bashrc
 sudo -u deploy curl -fsSL https://github.com/rbenv/rbenv-installer/raw/main/bin/rbenv-doctor | bash
 
 cat ~/.bash_profile >> ~/.bashrc
 cat ~/.profile >> ~/.bashrc
 cp ~/.bashrc ~/.bash_profile
 cp ~/.bashrc ~/.profile
-exec $SHELL
+su deploy -c exec $SHELL
 
 read -p 'Ruby Version?: ' ruby_version
-sudo -u deploy exec "rbenv install $ruby_version"
-sudo -u deploy exec "rbenv global $ruby_version"
+su deploy -c rbenv install $ruby_version
+su deploy -c rbenv global $ruby_version
 
 gem install bundler
 
