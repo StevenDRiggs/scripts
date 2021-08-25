@@ -1,6 +1,8 @@
 #! /bin/bash
 
 
+cd ~
+
 rm -rfv ~/MyConfig ~/.bashrc ~/.bash_profile ~/.profile ~/.vim*
 touch ~/.bashrc
 
