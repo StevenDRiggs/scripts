@@ -13,8 +13,8 @@ git config --global submodule.recurse true
 
 sudo adduser deploy
 sudo adduser deploy sudo
-su deploy
-cd ../deploy/
+sudo su deploy
+cd ~
 
 sudo vim .ssh/authorized_keys
 
