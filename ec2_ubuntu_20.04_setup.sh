@@ -15,34 +15,31 @@ git config --global submodule.recurse true
 
 sudo adduser deploy
 sudo adduser deploy sudo
-sudo su deploy
-cd ~
 
-sudo vim .ssh/authorized_keys
+sudo -u deploy vim .ssh/authorized_keys
 
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-echo 'eval "$($HOME/.linuxbrew/bin/brew shellenv)"' >> $HOME/.profile
-eval "$($HOME/.linuxbrew/bin/brew shellenv)"
+sudo -u deploy /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+sudo -u deploy echo 'eval "$($HOME/.linuxbrew/bin/brew shellenv)"' >> $HOME/.profile
+sudo -u deploy eval "$($HOME/.linuxbrew/bin/brew shellenv)"
 
-sudo apt install build-essential -y
+sudo -u deploy apt install build-essential -y
 
-sudo apt install apt-transport-https automake bison build-essential ca-certificates dirmngr g++ gcc gifsicle git-core gnupg jpegoptim libcurl4-openssl-dev libffi-dev libgdbm-dev libncurses5-dev libpq-dev libqt5webkit5-dev libreadline-dev libsqlite3-dev libssl-dev libtool libxml2-dev libxslt1-dev libyaml-dev make nodejs optipng postgresql postgresql-contrib qt5-default redis-server redis-tools ruby-dev software-properties-common sqlite3 yarn zlib1g-dev -y
-# pg_ctlcluster 12 main start
+sudo -u deploy apt install apt-transport-https automake bison build-essential ca-certificates dirmngr g++ gcc gifsicle git-core gnupg jpegoptim libcurl4-openssl-dev libffi-dev libgdbm-dev libncurses5-dev libpq-dev libqt5webkit5-dev libreadline-dev libsqlite3-dev libssl-dev libtool libxml2-dev libxslt1-dev libyaml-dev make nodejs optipng postgresql postgresql-contrib qt5-default redis-server redis-tools ruby-dev software-properties-common sqlite3 yarn zlib1g-dev -y
 
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-nvm install node
-npm install -g npm
-npm install -g yarn
+sudo -u deploy curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+sudo -u deploy export NVM_DIR="$HOME/.nvm"
+sudo -u deploy [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
+sudo -u deploy [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+sudo -u deploy nvm install node
+sudo -u deploy npm install -g npm
+sudo -u deploy npm install -g yarn
 
-sudo add-apt-repository ppa:redislabs/redis
-sudo apt update
-sudo apt install redis
+sudo -u deploy add-apt-repository ppa:redislabs/redis
+sudo -u deploy apt update
+sudo -u deploy apt install redis
 
-brew install rbenv
-rbenv init
+sudo -u deploy brew install rbenv
+sudo -u deploy rbenv init
 #echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
 #curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
 #rbenv install 2.5.7
@@ -61,7 +58,7 @@ rbenv init
 #cp ~/MyConfig/.vimrc ~
 #source ~/.bash_profile
 #
-#sudo apt install vim -y
+#sudo -u deploy apt install vim -y
 #git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 #vim -c ':PluginInstall' -c ':q' -c ':q' .vimrc
 #vim -c ':%s/"//' -c ':w' -c ':source %' -c ':PluginInstall' -c ':q' -c ':q' .vimrc
