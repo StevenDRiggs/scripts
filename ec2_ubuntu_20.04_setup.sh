@@ -16,7 +16,6 @@ sudo adduser deploy sudo
 su deploy
 cd ../deploy/
 
-ssh-keygen -t ed25519 -C "sfriggs21@gmail.com"
 sudo vim .ssh/authorized_keys
 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
