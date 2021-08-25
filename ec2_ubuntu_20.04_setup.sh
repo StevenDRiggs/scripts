@@ -38,7 +38,7 @@ sudo -u deploy add-apt-repository ppa:redislabs/redis -y
 sudo -u deploy apt update
 sudo -u deploy apt install redis
 
-sudo -u deploy brew install rbenv
+sudo -u deploy brew install rbenv -v
 sudo -u deploy rbenv init
 #echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
 #curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
