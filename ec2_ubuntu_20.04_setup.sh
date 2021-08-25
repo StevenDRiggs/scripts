@@ -47,8 +47,8 @@ sudo add-apt-repository ppa:redislabs/redis -y
 sudo apt update
 sudo apt install redis
 
-brew install rbenv -v
-rbenv init
+sudo -u deploy brew install rbenv -v
+sudo -u deploy rbenv init
 sudo -u deploy echo '
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
