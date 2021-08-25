@@ -47,9 +47,9 @@ sudo add-apt-repository ppa:redislabs/redis -y
 sudo apt update
 sudo apt install redis
 
-su deploy -c brew install rbenv -v
-su deploy -c rbenv init
-su deploy -c echo '
+sudo su deploy -c brew install rbenv -v
+sudo su deploy -c rbenv init
+sudo su deploy -c echo '
 export PATH=\"$HOME/.rbenv/bin:$PATH\"
 eval \"$(rbenv init -)\"
 export PATH=\"$HOME/.rbenv/plugins/ruby-build/bin:$PATH\"' >> .bashrc
@@ -59,11 +59,11 @@ cat ~/.bash_profile >> ~/.bashrc
 cat ~/.profile >> ~/.bashrc
 cp ~/.bashrc ~/.bash_profile
 cp ~/.bashrc ~/.profile
-su deploy -c exec $SHELL
+sudo su deploy -c exec $SHELL
 
 read -p 'Ruby Version?: ' ruby_version
-su deploy -c rbenv install $ruby_version
-su deploy -c rbenv global $ruby_version
+sudo su deploy -c rbenv install $ruby_version
+sudo su deploy -c rbenv global $ruby_version
 
 gem install bundler
 
