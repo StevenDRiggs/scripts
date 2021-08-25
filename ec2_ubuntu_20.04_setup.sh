@@ -61,8 +61,8 @@ cp ~/.bashrc ~/.profile
 exec $SHELL
 
 read -p 'Ruby Version?: ' ruby_version
-rbenv install $ruby_version
-rbenv global $ruby_version
+sudo -u deploy rbenv install $ruby_version
+sudo -u deploy rbenv global $ruby_version
 
 gem install bundler
 
