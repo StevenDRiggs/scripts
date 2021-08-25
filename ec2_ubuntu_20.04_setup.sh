@@ -19,8 +19,8 @@ sudo adduser deploy sudo
 sudo -u deploy vim .ssh/authorized_keys
 
 sudo -u deploy /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-sudo -u deploy echo 'eval "$($HOME/.linuxbrew/bin/brew shellenv)"' >> $HOME/.profile
-sudo -u deploy eval "$($HOME/.linuxbrew/bin/brew shellenv)"
+echo 'sudo -u deploy eval "$($HOME/.linuxbrew/bin/brew shellenv)"' >> $HOME/.profile
+eval "$(sudo -u deploy $HOME/.linuxbrew/bin/brew shellenv)"
 
 sudo -u deploy apt install build-essential -y
 
