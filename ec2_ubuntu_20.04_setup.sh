@@ -16,7 +16,7 @@ git config --global submodule.recurse true
 sudo adduser deploy
 sudo adduser deploy sudo
 
-sudo -u deploy vim .ssh/authorized_keys
+sudo vim .ssh/authorized_keys
 
 sudo -u deploy /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 echo 'sudo -u deploy eval "$($HOME/.linuxbrew/bin/brew shellenv)"' >> $HOME/.profile
