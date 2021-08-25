@@ -98,4 +98,7 @@ server {
     gzip_static on;
   }
 }' | sudo tee /etc/nginx/sites-enabled/stevendriggs.com
+
 sudo service nginx start
+
+sudo apt autoremove
