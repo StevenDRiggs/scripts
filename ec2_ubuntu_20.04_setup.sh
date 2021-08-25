@@ -40,17 +40,28 @@ sudo -u deploy apt install redis
 
 sudo -u deploy brew install rbenv -v
 sudo -u deploy rbenv init
-#echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
-#curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
-#rbenv install 2.5.7
-#rbenv global 2.5.7
-#
-#gem install bundler rails
-#
-#brew install python3
-#pip3 install virtualenv
-#
-#cd ~
+sudo -u deploy echo '
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> .bashrc
+sudo -u deploy $ curl -fsSL https://github.com/rbenv/rbenv-installer/raw/main/bin/rbenv-doctor | bash
+
+exec $SHELL
+
+sudo -u deploy read -p 'Ruby Version?: ' ruby_version
+sudo -u deploy rbenv install $ruby_version
+sudo -u deploy rbenv global $ruby_version
+
+sudo -u deploy gem install bundler
+
+sudo -u deploy apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 561F9B9CAC40B2F7
+sudo -u deploy sh -c 'echo deb https://oss-binaries.phusionpassenger.com/apt/passenger focal main > /etc/apt/sources.list.d/passenger.list'
+sudo -u deploy apt update
+sudo -u deploy apt install -y nginx-extras libnginx-mod-http-passenger
+if [ ! -f /etc/nginx/modules-enabled/50-mod-http-passenger.conf ]; then sudo -u deploy ln -s /usr/share/nginx/modules-available/mod-http-passenger.load /etc/nginx/modules-enabled/50-mod-http-passenger.conf ; fi
+sudo -u deploy ls /etc/nginx/conf.d/mod-http-passenger.conf
+
+sudo -u deploy vim /etc/nginx/conf.d/mod-http-passenger.conf
 #git clone git@github.com/$gh_username/MyConfig.git
 #cp ~/MyConfig/.bash_profile ~
 #cp ~/MyConfig/.bashrc ~
