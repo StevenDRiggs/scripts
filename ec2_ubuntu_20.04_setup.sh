@@ -49,10 +49,9 @@ sudo apt install redis
 
 sudo -u deploy brew install rbenv -v
 sudo -u deploy rbenv init
-sudo -u deploy echo '
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> .bashrc
+sudo -u deploy echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+sudo -u deploy echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> .bashrc
 sudo -u deploy curl -fsSL https://github.com/rbenv/rbenv-installer/raw/main/bin/rbenv-doctor | bash
 
 cat ~/.bash_profile >> ~/.bashrc
