@@ -4,16 +4,6 @@
 cd ~
 
 rm -rfv ~/.bashrc ~/.bash_profile ~/.profile ~/.vim*
-git clone git@github.com:StevenDRiggs/MyConfig.git
-cp ~/MyConfig/.bashrc ~
-cp ~/MyConfig/.vimrc ~
-
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-vim -c ':PluginInstall' -c ':q' -c ':q' ~/.vimrc
-vim -c ':%s/"//' -c ':w' -c ':source %' -c ':PluginInstall' -c ':q' -c ':q' ~/.vimrc
-vim -c ':%s/"//' -c ':wq' ~/.vimrc
-
-rm -rf MyConfig/
 
 git config --global color.ui true
 git config --global user.name "StevenDRiggs"
@@ -52,8 +42,49 @@ curl -fsSL https://github.com/rbenv/rbenv-installer/raw/main/bin/rbenv-doctor | 
 
 cat ~/.bash_profile >> ~/.bashrc
 cat ~/.profile >> ~/.bashrc
+
+echo "
+
+# If not running interactively, don't do anything
+case \$- in
+    *i*) ;;
+      *) return;;
+esac" >> ~/.bashrc
+
 cp ~/.bashrc ~/.bash_profile
 cp ~/.bashrc ~/.profile
+
+echo "
+
+echo '.bashrc called'
+
+" >> ~/.bashrc
+
+echo "
+
+echo '.bash_profile called'
+
+" >> ~/.bash_profile
+
+echo "
+
+echo '.profile called'
+
+" >> ~/.profile
+
+git clone git@github.com:StevenDRiggs/MyConfig.git
+cat ~/MyConfig/.bashrc >> ~/.bashrc
+cat ~/MyConfig/.bashrc >> ~/.bash_profile
+cat ~/MyConfig/.bashrc >> ~/.profile
+
+cp ~/MyConfig/.vimrc ~
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+vim -c ':PluginInstall' -c ':q' -c ':q' ~/.vimrc
+vim -c ':%s/"//' -c ':w' -c ':source %' -c ':PluginInstall' -c ':q' -c ':q' ~/.vimrc
+vim -c ':%s/"//' -c ':wq' ~/.vimrc
+
+rm -rf MyConfig/
+
 exec $SHELL
 
 read -p 'Ruby Version?: ' ruby_version
@@ -69,7 +100,7 @@ sudo apt install nginx-extras libnginx-mod-http-passenger -y
 if [ ! -f /etc/nginx/modules-enabled/50-mod-http-passenger.conf ]; then sudo ln -s /usr/share/nginx/modules-available/mod-http-passenger.load /etc/nginx/modules-enabled/50-mod-http-passenger.conf ; fi
 sudo ls /etc/nginx/conf.d/mod-http-passenger.conf
 
-sudo vim -c ":%s/passenger_free_ruby/$(which ruby | sed 's|\/|\\\/|g')/" -c "s/\/\//\//g" -c ":wq" /etc/nginx/conf.d/mod-http-passenger.conf
+sudo vim -c ":%s/\/usr\/bin\/passenger_free_ruby/$(which ruby | sed 's|\/|\\\/|g')/" -c "s/\/\//\//g" -c ":wq" /etc/nginx/conf.d/mod-http-passenger.conf
 echo '
 server {
   listen 80;
