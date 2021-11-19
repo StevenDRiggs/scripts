@@ -5,9 +5,11 @@ cd ~
 
 rm -rfv ~/.bashrc ~/.bash_profile ~/.profile ~/.vim*
 
+read -p 'git username?: ' git_username
+read -p 'git email?: ' git_email
 git config --global color.ui true
-git config --global user.name "StevenDRiggs"
-git config --global user.email "sfriggs21@gmail.com"
+git config --global user.name $git_username
+git config --global user.email $git_email
 git config --global submodule.recurse true
 
 sudo vim .ssh/authorized_keys
@@ -20,7 +22,7 @@ sudo apt install build-essential -y
 
 sudo apt install apt-transport-https automake bison ca-certificates dirmngr g++ gcc gifsicle git-core gnupg jpegoptim libcurl4-openssl-dev libffi-dev libgdbm-dev libncurses5-dev libpq-dev libqt5webkit5-dev libreadline-dev libsqlite3-dev libssl-dev libtool libxml2-dev libxslt1-dev libyaml-dev make nodejs optipng postgresql postgresql-contrib qt5-default redis-server redis-tools ruby-dev software-properties-common sqlite3 tree yarn zlib1g-dev -y
 
-sudo curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+sudo curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
@@ -79,8 +81,8 @@ cat ~/MyConfig/.bashrc >> ~/.profile
 
 cp ~/MyConfig/.vimrc ~
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-vim -c ':PluginInstall' -c ':q' -c ':q' ~/.vimrc
-vim -c ':%s/"//' -c ':w' -c ':source %' -c ':PluginInstall' -c ':q' -c ':q' ~/.vimrc
+vim -c ':PluginInstall' -c ':qa' ~/.vimrc
+vim -c ':%s/"//' -c ':w' -c ':source %' -c ':PluginInstall' -c ':qa' ~/.vimrc
 vim -c ':%s/"//' -c ':wq' ~/.vimrc
 
 rm -rf MyConfig/
@@ -93,38 +95,38 @@ rbenv global $ruby_version
 
 gem install bundler
 
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 561F9B9CAC40B2F7
-sudo sh -c 'echo deb https://oss-binaries.phusionpassenger.com/apt/passenger focal main > /etc/apt/sources.list.d/passenger.list'
-sudo apt update -y && sudo apt upgrade -y
-sudo apt install nginx-extras libnginx-mod-http-passenger -y
-if [ ! -f /etc/nginx/modules-enabled/50-mod-http-passenger.conf ]; then sudo ln -s /usr/share/nginx/modules-available/mod-http-passenger.load /etc/nginx/modules-enabled/50-mod-http-passenger.conf ; fi
-sudo ls /etc/nginx/conf.d/mod-http-passenger.conf
-
-sudo vim -c ":%s/\/usr\/bin\/passenger_free_ruby/$(which ruby | sed 's|\/|\\\/|g')/" -c "s/\/\//\//g" -c ":wq" /etc/nginx/conf.d/mod-http-passenger.conf
-echo '
-server {
-  listen 80;
-  listen [::]:80;
-
-  server_name stevendriggs.com;
-  root /home/deploy/aws_rails/current/public;
-
-  passenger_enabled on;
-  passenger_app_env production;
-
-  location /cable {
-    passenger_app_group_name aws_rails_websocket;
-    passenger_force_max_concurrent_requests_per_process 0;
-  }
-
-  client_max_body_size 200m;
-
-  location ~ ^/(assets|packs) {
-    expires max;
-    gzip_static on;
-  }
-}' | sudo tee /etc/nginx/sites-enabled/stevendriggs.com
-
-sudo service nginx start
+# sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 561F9B9CAC40B2F7
+# sudo sh -c 'echo deb https://oss-binaries.phusionpassenger.com/apt/passenger focal main > /etc/apt/sources.list.d/passenger.list'
+# sudo apt update -y && sudo apt upgrade -y
+# sudo apt install nginx-extras libnginx-mod-http-passenger -y
+# if [ ! -f /etc/nginx/modules-enabled/50-mod-http-passenger.conf ]; then sudo ln -s /usr/share/nginx/modules-available/mod-http-passenger.load /etc/nginx/modules-enabled/50-mod-http-passenger.conf ; fi
+# sudo ls /etc/nginx/conf.d/mod-http-passenger.conf
+# 
+# sudo vim -c ":%s/\/usr\/bin\/passenger_free_ruby/$(which ruby | sed 's|\/|\\\/|g')/" -c "s/\/\//\//g" -c ":wq" /etc/nginx/conf.d/mod-http-passenger.conf
+# echo '
+# server {
+#   listen 80;
+#   listen [::]:80;
+# 
+#   server_name stevendriggs.com;
+#   root /home/deploy/aws_rails/current/public;
+# 
+#   passenger_enabled on;
+#   passenger_app_env production;
+# 
+#   location /cable {
+#     passenger_app_group_name aws_rails_websocket;
+#     passenger_force_max_concurrent_requests_per_process 0;
+#   }
+# 
+#   client_max_body_size 200m;
+# 
+#   location ~ ^/(assets|packs) {
+#     expires max;
+#     gzip_static on;
+#   }
+# }' | sudo tee /etc/nginx/sites-enabled/stevendriggs.com
+# 
+# sudo service nginx start
 
 sudo apt autoremove -y
