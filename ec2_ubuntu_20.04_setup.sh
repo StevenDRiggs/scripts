@@ -15,7 +15,7 @@ git config --global submodule.recurse true
 sudo vim .ssh/authorized_keys
 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/deploy/.profile
+echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/.profile
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 sudo apt install build-essential -y
