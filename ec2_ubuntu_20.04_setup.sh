@@ -20,7 +20,10 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 sudo apt install build-essential -y
 
-sudo apt install apt-transport-https automake bison ca-certificates dirmngr g++ gcc gifsicle git-core gnupg jpegoptim libcurl4-openssl-dev libffi-dev libgdbm-dev libncurses5-dev libpq-dev libqt5webkit5-dev libreadline-dev libsqlite3-dev libssl-dev libtool libxml2-dev libxslt1-dev libyaml-dev make nodejs optipng postgresql postgresql-contrib qt5-default redis-server redis-tools ruby-dev software-properties-common sqlite3 tree yarn zlib1g-dev -y
+sudo apt install apt-transport-https automake bison ca-certificates dirmngr g++ gcc gifsicle git-core gnupg jpegoptim libcurl4-openssl-dev libffi-dev libgdbm-dev libncurses5-dev libpq-dev libqt5webkit5-dev libreadline-dev libsqlite3-dev libssl-dev libtool libxml2-dev libxslt1-dev libyaml-dev make nodejs optipng qt5-default redis-server redis-tools ruby-dev software-properties-common sqlite3 tree yarn zlib1g-dev -y
+# sudo apt install postgresql postgresql-contrib
+
+brew install postgresql
 
 sudo curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
@@ -29,6 +32,7 @@ export NVM_DIR="$HOME/.nvm"
 nvm install node
 npm install -g npm
 npm install -g yarn
+yarn global add typescript @types/jest
 
 sudo add-apt-repository -y ppa:redislabs/redis
 sudo apt update -y && sudo apt upgrade -y
@@ -93,8 +97,17 @@ read -p 'Ruby Version?: ' ruby_version
 rbenv install $ruby_version -v
 rbenv global $ruby_version
 
-gem install bundler
+gem install bundler rails rspec rspec-rails
 
+curl https://www.python.org/ftp/python/3.9.9/Python-3.9.9.tgz --output Python-3.9.9.tgz
+tar -xf ./Python-3.9.9.tgz
+cd Python-3.9.9.tgz
+./configure
+sudo make altinstall
+
+cd ~
+
+## nginx
 # sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 561F9B9CAC40B2F7
 # sudo sh -c 'echo deb https://oss-binaries.phusionpassenger.com/apt/passenger focal main > /etc/apt/sources.list.d/passenger.list'
 # sudo apt update -y && sudo apt upgrade -y
