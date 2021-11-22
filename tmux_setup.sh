@@ -12,6 +12,15 @@ git config --global user.name $git_username
 git config --global user.email $git_email
 git config --global submodule.recurse true
 
+pkg install -y make libllvm clang
+
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+cd ~/.rbenv && src/configure && make -C src
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+rbenv init
+
+
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 echo 'eval "$($HOME/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> $HOME/.profile
 eval "$($HOME/linuxbrew/.linuxbrew/bin/brew shellenv)"
